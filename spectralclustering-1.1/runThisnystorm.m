@@ -26,4 +26,12 @@ for i = 1:numel(sample_num_array)
     result_mat_nystorm(i, :) = [l ,accuracy_score, iteration_time];
     
 end
-result_mat_nystorm
+% result_mat_nystorm
+
+plot(result_mat_nystorm(:,1),result_mat_nystorm(:,2));
+xlabel('l');
+ylabel('accuracy');
+figure;
+plot(result_mat_nystorm(:,1),result_mat_nystorm(:,3));
+xlabel('l');
+ylabel('time');

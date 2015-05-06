@@ -37,5 +37,12 @@ for i = 1:numel(list_t)
 %     profile off;
 %     profile viewer;
 end
-result_mat_sc
+% result_mat_sc
 
+plot(result_mat_sc(:,1),result_mat_sc(:,2));
+xlabel('t');
+ylabel('accuracy');
+figure;
+plot(result_mat_sc(:,1),result_mat_sc(:,3));
+xlabel('t');
+ylabel('time');
