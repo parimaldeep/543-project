@@ -47,5 +47,12 @@ for i = 1:numel(list_E)
 %     profile off;
 %     profile viewer;
 end
-result_mat_sc_E
+% result_mat_sc_E
 
+plot(result_mat_sc_E(:,1),result_mat_sc_E(:,2));
+xlabel('epsilon');
+ylabel('accuracy');
+figure;
+plot(result_mat_sc_E(:,1),result_mat_sc_E(:,3));
+xlabel('epsilon');
+ylabel('time');
