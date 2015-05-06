@@ -1,5 +1,5 @@
-data_set = 'rcv';
-% data_set = 'corel';
+% data_set = 'rcv';
+data_set = 'corel';
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -15,6 +15,7 @@ num_clusters = 18;
 block_size = 10;
 for i = 1:numel(list_t)
     tic;
+%     profile -timer cpu;
     t = list_t(i);
     gen_nn_distance(feature, t, block_size, 0);
 
@@ -27,5 +28,7 @@ for i = 1:numel(list_t)
     
     iteration_time = toc;
     result_mat(i, :) = [t ,accuracy_score, iteration_time];
+%     S = profile('status');
+    profile clear;
 end
 result_mat
