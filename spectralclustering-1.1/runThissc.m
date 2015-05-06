@@ -1,3 +1,4 @@
+close all;
 % data_set = 'rcv';
 data_set = 'corel';
 % sel_item = 5000;
@@ -11,7 +12,15 @@ load(input_file);
 % feature = feature(1:sel_item, :);
 % label = label(1:sel_item, :);
 
-list_t = [20 50 100 200 500 1000 1500];
+[M, N] = size(feature);
+
+% list_t = [20 50 100 200 500 1000 1500];
+num_t = 12;
+list_t = linspace(0, M, num_t);
+list_t = list_t(:, 1:end - 1);
+list_t = list_t(:, 2:end);
+list_t = floor(list_t);
+
 result_mat_sc = zeros(numel(list_t), 3);
 
 sigma = 20;
@@ -46,3 +55,6 @@ figure;
 plot(result_mat_sc(:,1),result_mat_sc(:,3));
 xlabel('t');
 ylabel('time');
+
+
+delete *.mat;

@@ -1,3 +1,4 @@
+close all;
 % data_set = 'rcv';
 data_set = 'corel';
 % sel_item = 5000;
