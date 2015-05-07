@@ -27,7 +27,7 @@ if (sigma == 0) % Selftuning spectral clustering
   col_count = sum(A~=0, 1)';
   col_sum = sum(A, 1)';
   col_mean = col_sum ./ col_count;
-  [x y val] = find(A);
+  [x    y val] = find(A);
   A = sparse(x, y, -val.*val./col_mean(x)./col_mean(y)./2);
   clear col_count col_sum col_mean x y val;
 else % Fixed-sigma spectral clustering

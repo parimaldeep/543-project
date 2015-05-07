@@ -11,9 +11,7 @@ load(input_file);
 
 % feature = feature(1:sel_item, :);
 % label = label(1:sel_item, :);
-
-
-
+num_t = 20;
 sigma = 20;
 num_clusters = 18;
 block_size = 10;
@@ -21,7 +19,7 @@ gen_nn_distance_sparse_0(feature, block_size, 0);
 input_file = 'sparse0_distance.mat';
 load(input_file, 'A');
 
-list_E = linspace(min(A(:)), max(A(:)), 12);
+list_E = linspace(min(A(:)), max(A(:)), num_t);
 
 list_E = list_E(:, 1:end - 1);
 list_E = list_E(:, 2:end);
@@ -48,12 +46,12 @@ for i = 1:numel(list_E)
 %     profile off;
 %     profile viewer;
 end
-% result_mat_sc_E
+result_mat_sc_E
 
 plot(result_mat_sc_E(:,1),result_mat_sc_E(:,2));
-xlabel('epsilon');
-ylabel('accuracy');
+xlabel('Threshold value (epsilon)');
+ylabel('Accuracy percentage');
 figure;
 plot(result_mat_sc_E(:,1),result_mat_sc_E(:,3));
-xlabel('epsilon');
-ylabel('time');
+xlabel('Threshold value (epsilon)');
+ylabel('Time in seconds');

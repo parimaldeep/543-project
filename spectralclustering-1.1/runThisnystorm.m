@@ -13,7 +13,7 @@ load(input_file);
 % sample_num_array = [20 50 100 200 500 1000 1500];
 [M, N] = size(feature);
 
-num_array = 12;
+num_array = 20;
 sample_num_array = linspace(0, M, num_t);
 sample_num_array = sample_num_array(:, 1:end - 1);
 sample_num_array = sample_num_array(:, 2:end);
@@ -36,14 +36,14 @@ for i = 1:numel(sample_num_array)
     result_mat_nystorm(i, :) = [l ,accuracy_score, iteration_time];
     
 end
-% result_mat_nystorm
+result_mat_nystorm
 
 plot(result_mat_nystorm(:,1),result_mat_nystorm(:,2));
-xlabel('l');
-ylabel('accuracy');
+xlabel('Number of sample data points (l)');
+ylabel('Accuracy percentage');
 figure;
 plot(result_mat_nystorm(:,1),result_mat_nystorm(:,3));
-xlabel('l');
-ylabel('time');
+xlabel('Number of sample data points (l)');
+ylabel('Time in seconds');
 
 delete *.mat;
