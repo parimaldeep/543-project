@@ -80,6 +80,10 @@ clear B B_T;
 % Calculate R = A + A^-1/2*B*B'*A^-1/2
 R = A + Asi*BBT*Asi;
 R = (R + R')/2; % Make sure R is symmetric, sometimes R can be non-symmetric because of numerical inaccuracy
+[fi,fj]=find(R==NaN | R==Inf);
+for it=1:numel(fi)
+    R(fi(it),fj(it))=0;
+end;
 [U L] = eig(R);
 [val ind] = sort(diag(L), 'descend');
 U = U(:, ind); % in decreasing order

@@ -50,7 +50,7 @@ P = X + Y - 2*centers*data';
 %
 % Main program
 %
-while 1
+while iter<500
   iter = iter + 1;
 
   % Find the closest cluster for each data point
