@@ -1,7 +1,7 @@
 close all;
-% data_set = 'rcv';
-data_set = 'corel';
-% sel_item = 5000;
+data_set = 'rcv';
+% data_set = 'corel';
+sel_item = 50000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -9,13 +9,13 @@ load(input_file);
 input_file = ['data/', num2str(data_set), '_label.mat'];
 load(input_file);
 
-% feature = feature(1:sel_item, :);
-% label = label(1:sel_item, :);
+feature = feature(1:sel_item, :);
+label = label(1:sel_item, :);
 
 [M, N] = size(feature);
 
 % list_t = [20 50 100 200 500 1000 1500];
-num_t = 12;
+num_t = 20;
 list_t = linspace(0, M, num_t);
 list_t = list_t(:, 1:end - 1);
 list_t = list_t(:, 2:end);
@@ -46,15 +46,15 @@ for i = 1:numel(list_t)
 %     profile off;
 %     profile viewer;
 end
-% result_mat_sc
+result_mat_sc
 
 plot(result_mat_sc(:,1),result_mat_sc(:,2));
-xlabel('t');
-ylabel('accuracy');
+xlabel('Number of nearest neighbors');
+ylabel('Accuracy percentage');
 figure;
 plot(result_mat_sc(:,1),result_mat_sc(:,3));
-xlabel('t');
-ylabel('time');
+xlabel('Number of nearest neighbors');
+ylabel('Time in seconds');
 
 
 delete *.mat;
