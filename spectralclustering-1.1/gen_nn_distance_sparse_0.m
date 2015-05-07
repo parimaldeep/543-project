@@ -1,4 +1,4 @@
-function gen_nn_distance(data, block_size, save_type)
+function[minVal, maxVal] = gen_nn_distance_sparse_0(data, block_size, save_type, t)
 %GEN_NN_DISTANCE Generate (t-nearest-neighbor) sparse distance matrix.
 %
 %   Input  : data         : N-by-D data matrix, where N is the number of data,
@@ -17,7 +17,7 @@ disp('Computing non-symmetric distances matrix...')
 n = size(data, 1);
 num_iter = ceil(n/block_size);
 disp(['Number of iterations: ', num2str(num_iter)]);
-A = zeros(n, n);
+A = sparse(n, n);
 dataT = data';
 
 % For Euclidean distance, computing data.*data outside the loop to save time
@@ -59,7 +59,7 @@ for i = 1:num_iter
 %   tempvalue = value(2:num_neighbors+1, :);
 %   value = reshape(tempvalue, size(tempvalue, 1)*size(tempvalue, 2), 1);
 %   value = sqrt(max(value, 1.0e-12));
-  A(:, start_index:end_index) = dist;
+  A(:, start_index:end_index) = sparse(dist);
 end
 %outfile = [num2str(num_neighbors), '_NN_nonsym_distance.mat'];
 %save(outfile, 'A');
@@ -67,6 +67,15 @@ end
 % index = find (A < medianVal);
 % A(index) = 0;
 % A = sparse(A);
+
+if t ~= -1
+    index = find (A < t);
+    A(index) = 0;
+end
+minVal = min(A(:));
+maxVal = max(A(:));
+% A = sparse(A);
+
 clear data dataT tempindex rowindex columnindex tempvalue value;
 toc;
 

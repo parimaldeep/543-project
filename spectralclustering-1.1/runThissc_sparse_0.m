@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 5000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -15,12 +15,10 @@ num_t = 20;
 sigma = 20;
 num_clusters = 18;
 block_size = 10;
-gen_nn_distance_sparse_0(feature, block_size, 0);
-input_file = 'sparse0_distance.mat';
-load(input_file, 'A');
 
-list_E = linspace(min(A(:)), max(A(:)), num_t);
+[minVal, maxVal] = gen_nn_distance_sparse_0(feature, block_size, 0, -1);
 
+list_E = linspace(minVal, maxVal, num_t);
 list_E = list_E(:, 1:end - 1);
 list_E = list_E(:, 2:end);
 
@@ -32,11 +30,11 @@ for i = 1:numel(list_E)
     tStart = tic;
     t = list_E(i);
     
-    index = find (A < t);
-    A(index) = 0;
-    B = sparse(A);
+    gen_nn_distance_sparse_0(feature, block_size, 0, t);
+    input_file = 'sparse0_distance.mat';
+    load(input_file, 'A');
 
-    [cluster_labels evd_time kmeans_time total_time] = sc(B, sigma, num_clusters);
+    [cluster_labels evd_time kmeans_time total_time] = sc(A, sigma, num_clusters);
     
     accuracy_score = accuracy(label, cluster_labels);
     

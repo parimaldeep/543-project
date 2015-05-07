@@ -10,7 +10,7 @@ load(input_file);
 feature = feature(end-sel_item+1:end, :);
 label = label(end-sel_item+1:end, :);
 
-% sample_num_array = [20 50 100 200 500 1000 1500];
+
 [M, N] = size(feature);
 
 num_array = 20;
@@ -22,6 +22,9 @@ sample_num_array=[200 500 800 1000 1500 2000 2500 3000 3500];
 
 sigma = 2;
 num_clusters = 103;
+
+
+
 
 result_mat_nystorm = zeros(numel(sample_num_array), 3);
   
