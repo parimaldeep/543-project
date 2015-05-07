@@ -54,10 +54,6 @@ ylabel('Accuracy percentage');
 figure;
 plot(result_mat_sc_E(:,1),result_mat_sc_E(:,3));
 xlabel('Threshold value (epsilon)');
-<<<<<<< HEAD
 ylabel('Time in seconds');
 
 delete *.mat;
-=======
-ylabel('Time in seconds');
->>>>>>> d3dbf4e083c9e00f67893914a1ce8ef6103a4e23
