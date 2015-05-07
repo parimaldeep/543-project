@@ -49,15 +49,15 @@ for i = 1:num_iter
   dist = max(dist, 0);
 
   % Find nearest neighbors
-  [value index] = sort(dist, 1);
-  tempindex = index(2:num_neighbors+1, :);
-  rowindex = reshape(tempindex, size(tempindex, 1)*size(tempindex, 2), 1);
-  tempindex = repmat(1:num_data, num_neighbors, 1);
-  columnindex = reshape(tempindex, size(tempindex, 1)*size(tempindex, 2), 1);
-  tempvalue = value(2:num_neighbors+1, :);
-  value = reshape(tempvalue, size(tempvalue, 1)*size(tempvalue, 2), 1);
-  value = sqrt(max(value, 1.0e-12));
-  A(:, start_index:end_index) = sparse(rowindex, columnindex, double(value), n, num_data);
+%   [value index] = sort(dist, 1);
+%   tempindex = index(2:num_neighbors+1, :);
+%   rowindex = reshape(tempindex, size(tempindex, 1)*size(tempindex, 2), 1);
+%   tempindex = repmat(1:num_data, num_neighbors, 1);
+%   columnindex = reshape(tempindex, size(tempindex, 1)*size(tempindex, 2), 1);
+%   tempvalue = value(2:num_neighbors+1, :);
+%   value = reshape(tempvalue, size(tempvalue, 1)*size(tempvalue, 2), 1);
+%   value = sqrt(max(value, 1.0e-12));
+  A(:, start_index:end_index) = sparse(dist);
 end
 %outfile = [num2str(num_neighbors), '_NN_nonsym_distance.mat'];
 %save(outfile, 'A');
@@ -120,13 +120,13 @@ A = A - B;
 %
 if (save_type == 0) || (save_type == 2)
   disp('Saving .mat file...');
-  outfile = [num2str(num_neighbors), '_NN_sym_distance.mat'];
+  outfile = ['base', '_NN_sym_distance.mat'];
   save(outfile, 'A');
 end
 
 if (save_type == 1) || (save_type == 2)
   disp('Writing .txt file...');
-  outfile = [ num2str(num_neighbors), '_NN_sym_distance.txt'];
+  outfile = ['base', '_NN_sym_distance.txt'];
   fid = fopen(outfile, 'w');
   n = size(A, 1);
   for i = 1:n
