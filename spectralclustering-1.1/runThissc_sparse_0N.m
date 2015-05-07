@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 5000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -17,7 +17,7 @@ list_n = list_n(:, 2:end);
 list_n = floor(list_n);
 
 sigma = 2;
-num_clusters = 103;
+num_clusters = 18;
 block_size = 10;
 
 % list_t = [20 50 100 200 500 1000 1500];
@@ -30,7 +30,7 @@ for i = 1:numel(list_n)
     feature_sel = feature(1:sel_item, :);
     label_sel = label(1:sel_item, :);
     
-    gen_nn_distance_sparse_0(feature, block_size, 0, t);
+    gen_nn_distance_sparse_0(feature_sel, block_size, 0, t);
     input_file = 'sparse0_distance.mat';
     load(input_file, 'A');
    
