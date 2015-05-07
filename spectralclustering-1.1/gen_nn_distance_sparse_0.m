@@ -1,4 +1,4 @@
-function[minVal, maxVal] = gen_nn_distance_sparse_0(data, block_size, save_type, t)
+function[A, minVal, maxVal] = gen_nn_distance_sparse_0(data, block_size, save_type, t)
 %GEN_NN_DISTANCE Generate (t-nearest-neighbor) sparse distance matrix.
 %
 %   Input  : data         : N-by-D data matrix, where N is the number of data,
