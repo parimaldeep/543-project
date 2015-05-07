@@ -34,9 +34,10 @@ for i = 1:numel(list_n)
     input_file = 'sparse0_distance.mat';
     load(input_file, 'A');
     
-    index = find (A < t);
-    A(index) = 0;
-    B = sparse(A);
+    B = A;
+    index = find (B < t);
+    B(index) = 0;
+    B = sparse(B);
 
     [cluster_labels evd_time kmeans_time total_time] = sc(B, sigma, num_clusters);
     
