@@ -1,14 +1,14 @@
-close all;
-% data_set = 'rcv';
-data_set = 'corel';
-% sel_item = 5000;
+% close all;
+data_set = 'rcv';
+% data_set = 'corel';
+sel_item = 5000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
 input_file = ['data/', num2str(data_set), '_label.mat'];
 load(input_file);
-% feature = feature(1:sel_item, :);
-% label = label(1:sel_item, :);
+feature = feature(1:sel_item, :);
+label = label(1:sel_item, :);
 
 % sample_num_array = [20 50 100 200 500 1000 1500];
 [M, N] = size(feature);
@@ -45,5 +45,6 @@ figure;
 plot(result_mat_nystorm(:,1),result_mat_nystorm(:,3));
 xlabel('Number of sample data points (l)');
 ylabel('Time in seconds');
+figure;
 
 delete *.mat;

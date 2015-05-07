@@ -1,4 +1,4 @@
-close all;
+% close all;
 data_set = 'rcv';
 % data_set = 'corel';
 sel_item = 5000;
@@ -42,5 +42,6 @@ figure;
 plot(result_mat_nystorm(:,1),result_mat_nystorm(:,3));
 xlabel('Number of images');
 ylabel('Time in seconds');
+figure;
 
 delete *.mat;

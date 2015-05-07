@@ -1,7 +1,7 @@
-close all;
+% close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 50000;
+sel_item = 5000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -55,6 +55,6 @@ figure;
 plot(result_mat_sc(:,1),result_mat_sc(:,3));
 xlabel('Number of nearest neighbors');
 ylabel('Time in seconds');
-
+figure;
 
 delete *.mat;
