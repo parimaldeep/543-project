@@ -15,8 +15,8 @@ list_n = list_n(:, 1:end - 1);
 list_n = list_n(:, 2:end);
 list_n = floor(list_n);
 
-sigma = 20;
-num_clusters = 18;
+sigma = 2;
+num_clusters = 103;
 
 result_mat_nystorm = zeros(numel(list_n), 3);
   

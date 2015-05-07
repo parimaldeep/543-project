@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 5000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -12,19 +12,20 @@ load(input_file);
 feature = feature(1:sel_item, :);
 label = label(1:sel_item, :);
 
-[M, N] = size(feature);
+% [M, N] = size(feature);
+% num_t = 20;
+% list_t = linspace(0, M, num_t);
+% list_t = list_t(:, 1:end - 1);
+% list_t = list_t(:, 2:end);
+% list_t = floor(list_t);
 
-% list_t = [20 50 100 200 500 1000 1500];
-num_t = 20;
-list_t = linspace(0, M, num_t);
-list_t = list_t(:, 1:end - 1);
-list_t = list_t(:, 2:end);
-list_t = floor(list_t);
+list_t = [20 50 75 100 150 200];
 
 result_mat_sc = zeros(numel(list_t), 3);
 
-sigma = 20;
-num_clusters = 18;
+sigma = 2;
+num_clusters = 103;
+
 block_size = 10;
 for i = 1:numel(list_t)
     tStart = tic;

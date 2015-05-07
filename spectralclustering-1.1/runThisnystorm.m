@@ -19,6 +19,7 @@ num_array = 20;
 % sample_num_array = sample_num_array(:, 2:end);
 % sample_num_array = floor(sample_num_array);
 sample_num_array=[200 500 800 1000 1500 2000 2500 3000 3500];
+% sample_num_array=[200 500 800];
 
 sigma = 2;
 num_clusters = 103;

@@ -16,8 +16,8 @@ list_n = list_n(:, 1:end - 1);
 list_n = list_n(:, 2:end);
 list_n = floor(list_n);
 
-sigma = 20;
-num_clusters = 18;
+sigma = 2;
+num_clusters = 103;
 block_size = 10;
 
 % list_t = [20 50 100 200 500 1000 1500];
@@ -30,16 +30,11 @@ for i = 1:numel(list_n)
     feature_sel = feature(1:sel_item, :);
     label_sel = label(1:sel_item, :);
     
-    gen_nn_distance_sparse_0(feature_sel, block_size, 0);
+    gen_nn_distance_sparse_0(feature, block_size, 0, t);
     input_file = 'sparse0_distance.mat';
     load(input_file, 'A');
-    
-    B = A;
-    index = find (B < t);
-    B(index) = 0;
-    B = sparse(B);
-
-    [cluster_labels evd_time kmeans_time total_time] = sc(B, sigma, num_clusters);
+   
+    [cluster_labels evd_time kmeans_time total_time] = sc(A, sigma, num_clusters);
     
     accuracy_score = accuracy(label_sel, cluster_labels);
     

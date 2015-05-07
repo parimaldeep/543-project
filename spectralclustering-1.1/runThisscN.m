@@ -18,8 +18,8 @@ list_n = floor(list_n);
 
 result_mat_sc = zeros(numel(list_n), 3);
 
-sigma = 20;
-num_clusters = 18;
+sigma = 2;
+num_clusters = 103;
 block_size = 10;
 for i = 1:numel(list_n)
     tStart = tic;
