@@ -9,8 +9,8 @@ load(input_file);
 input_file = ['data/', num2str(data_set), '_label.mat'];
 load(input_file);
 
-% feature = feature(1:sel_item, :);
-% label = label(1:sel_item, :);
+feature = feature(1:sel_item, :);
+label = label(1:sel_item, :);
 
 [M, N] = size(feature);
 
@@ -20,7 +20,7 @@ result_mat_sc1 = zeros(1, 3);
 % num_clusters = 18;
 % RCV
 sigma = 2;
-num_clusters=103;
+num_clusters = 103;
 block_size = 10;
 for i = 1:1
     tStart = tic;
