@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 10000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -11,7 +11,6 @@ feature = feature(end-sel_item+1:end, :);
 label = label(end-sel_item+1:end, :);
 
 
-[M, N] = size(feature);
 
 num_array = 20;
 % sample_num_array = linspace(10, M -100, num_array);
@@ -20,7 +19,7 @@ num_array = 20;
 % sample_num_array = floor(sample_num_array);
 
 % sample_num_array=[200 500 800 1000 1500 2000 2500 3000 3500];
-sample_num_array=[20 50 100 200 500 1000 1500 2000];
+sample_num_array=[200 500 1000 1500 2000];
 
 sigma = 2;
 num_clusters = 103;

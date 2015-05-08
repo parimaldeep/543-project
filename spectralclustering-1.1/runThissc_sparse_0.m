@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 10000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -11,10 +11,10 @@ load(input_file);
 
 feature = feature(1:sel_item, :);
 label = label(1:sel_item, :);
-num_t = 12;
-sigma = 20;
-num_clusters = 2;
-block_size = 103;
+num_t = 7;
+sigma = 2;
+num_clusters = 103;
+block_size = 10;
 
 [A, minVal, maxVal] = gen_nn_distance_sparse_0(feature, block_size, 0, -1);
 
