@@ -9,7 +9,7 @@ load(input_file);
 input_file = ['data/', num2str(data_set), '_label.mat'];
 load(input_file);
 
-t = 20; 
+t = 100; 
 % num_n = 10;
 % list_n = linspace(0, sel_item, num_n);
 % list_n = list_n(:, 1:end - 1);
