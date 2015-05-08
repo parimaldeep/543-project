@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 10000;
+sel_item = 25000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
@@ -20,7 +20,7 @@ list_n = floor(list_n);
 
 [M, N] = size(feature);
 
-result_mat_sc1 = zeros(1, 3);
+result_mat_sc1 = zeros(numel(list_n), 4);
 
 sigma = 2;
 num_clusters = 103;
@@ -38,12 +38,13 @@ for i = 1:numel(list_n)
     input_file = [num2str(sel_item - 1), '_NN_sym_distance.mat'];
     load(input_file, 'A');
 
-    [cluster_labels evd_time kmeans_time total_time] = sc(A, sigma, num_clusters);
-    
-    accuracy_score = accuracy(label_sel, cluster_labels);
+    size = ByteSize(A);
+%     [cluster_labels evd_time kmeans_time total_time] = sc(A, sigma, num_clusters);
+    accuracy_score = 0;
+%     accuracy_score = accuracy(label_sel, cluster_labels);
     
     iteration_time = toc(tStart);
-    result_mat_sc1(i, :) = [t ,accuracy_score, iteration_time];
+    result_mat_sc1(i, :) = [sel_item ,accuracy_score, iteration_time, size];
 %     S = profile('status');
 %     profile off;
 %     profile viewer;
