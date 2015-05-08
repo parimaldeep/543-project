@@ -1,7 +1,7 @@
 % close all;
 data_set = 'rcv';
 % data_set = 'corel';
-sel_item = 25000;
+sel_item = 5000;
 
 input_file = ['data/', num2str(data_set), '_feature.mat'];
 load(input_file);
