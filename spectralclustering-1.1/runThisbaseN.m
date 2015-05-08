@@ -30,6 +30,7 @@ for i = 1:numel(list_n)
 %     profile clear;
 %     profile on -detail builtin -history -memory;
     t = 1;
+    sel_item = list_n(i);
     feature_sel = feature(1:sel_item, :);
     label_sel = label(1:sel_item, :);
     gen_nn_distance(feature_sel, sel_item - 1, block_size, 0);
